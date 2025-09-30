@@ -21,5 +21,5 @@ It helps you manage your time, reinforce what you’ve learned, and reduce exam 
 ## 📦 Installation
 Clone this repository:
 ```bash
-git clone https://github.com/your-username/exammate.git
-cd exammate
+git clone https://github.com/L01YaGMobileAssignmentHK251/ExamMate.git
+cd ExamMate
