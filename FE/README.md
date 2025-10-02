@@ -23,3 +23,11 @@ Clone this repository:
 ```bash
 git clone https://github.com/L01YaGMobileAssignmentHK251/ExamMate.git
 cd ExamMate
+```
+ 
+Install dependencies and run the app:
+```bash
+npm install
+npm start
+```
+

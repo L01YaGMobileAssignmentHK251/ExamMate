@@ -1,0 +1,45 @@
+import axios from "axios";
+
+// Create axios instance
+export const api = axios.create({
+  baseURL:
+    process.env.EXPO_PUBLIC_API_URL || "https://jsonplaceholder.typicode.com",
+  timeout: 10000,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Request interceptor
+api.interceptors.request.use(
+  config => {
+    // Add auth token if available
+    const token = null; // TODO: Get from secure storage
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
+// Response interceptor
+api.interceptors.response.use(
+  response => response,
+  error => {
+    // Handle common errors
+    if (error.response?.status === 401) {
+      // TODO: Handle unauthorized - logout user
+      console.log("Unauthorized - redirect to login");
+    }
+
+    if (error.response?.status >= 500) {
+      // TODO: Show error toast
+      console.log("Server error");
+    }
+
+    return Promise.reject(error);
+  }
+);
